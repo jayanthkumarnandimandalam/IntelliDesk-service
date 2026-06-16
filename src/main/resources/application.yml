@@ -1,0 +1,159 @@
+spring:
+  application:
+    name: intellidesk-backend
+  profiles:
+    active: ${APP_PROFILE:local}
+
+server:
+  port: ${SERVER_PORT:8080}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:sk-local-dev-placeholder}
+
+intellidesk:
+  llm:
+    model: ${LLM_MODEL:llama-3.3-70b-versatile}
+    timeout-seconds: ${LLM_TIMEOUT_SECONDS:30}
+    base-url: ${LLM_BASE_URL:https://api.groq.com/openai/v1}
+  embedding:
+    model: ${EMBEDDING_MODEL:text-embedding-3-small}
+  vector-store:
+    url: ${VECTOR_STORE_URL:http://localhost:8000}
+  stt:
+    url: ${STT_SERVICE_URL:http://localhost:9000}
+  rag:
+    top-k: ${RAG_TOP_K:5}
+    similarity-threshold: ${RAG_SIMILARITY_THRESHOLD:0.3}
+    chunk-size: ${RAG_CHUNK_SIZE:100}
+    chunk-overlap: ${RAG_CHUNK_OVERLAP:20}
+    knowledge-base-dir: ${KNOWLEDGE_BASE_DIR:./data/knowledge-base}
+  session:
+    context-window-size: ${SESSION_CONTEXT_WINDOW:10}
+    timeout-minutes: ${SESSION_TIMEOUT_MINUTES:30}
+  security:
+    rate-limit-per-minute: ${RATE_LIMIT_PER_MINUTE:20}
+    max-message-length: ${MAX_MESSAGE_LENGTH:4000}
+    max-audio-size-mb: ${MAX_AUDIO_SIZE_MB:10}
+    max-audio-duration-sec: ${MAX_AUDIO_DURATION_SEC:60}
+    cors-allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  evaluation:
+    dataset-path: ${EVALUATION_DATASET_PATH:./data/evaluation/dataset.json}
+    report-output-path: ${EVALUATION_REPORT_PATH:./data/evaluation/report.json}
+    threshold: ${EVALUATION_THRESHOLD:0.7}
+    timeout-seconds: ${EVALUATION_TIMEOUT_SECONDS:120}
+  circuit-breaker:
+    failure-threshold: ${CB_FAILURE_THRESHOLD:5}
+    cooldown-seconds: ${CB_COOLDOWN_SECONDS:30}
+  health:
+    check-timeout-seconds: ${HEALTH_CHECK_TIMEOUT_SECONDS:5}
+  workflow:
+    node-timeout-seconds: ${WORKFLOW_NODE_TIMEOUT_SECONDS:30}
+
+logging:
+  level:
+    root: INFO
+    com.intellidesk: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+intellidesk:
+  llm:
+    model: ${LLM_MODEL:gpt-4o-mini}
+    timeout-seconds: ${LLM_TIMEOUT_SECONDS:30}
+  embedding:
+    model: ${EMBEDDING_MODEL:text-embedding-3-small}
+  vector-store:
+    url: ${VECTOR_STORE_URL}
+  stt:
+    url: ${STT_SERVICE_URL}
+  rag:
+    top-k: ${RAG_TOP_K:5}
+    similarity-threshold: ${RAG_SIMILARITY_THRESHOLD:0.7}
+    chunk-size: ${RAG_CHUNK_SIZE:512}
+    chunk-overlap: ${RAG_CHUNK_OVERLAP:50}
+    knowledge-base-dir: ${KNOWLEDGE_BASE_DIR:./data/knowledge-base}
+  session:
+    context-window-size: ${SESSION_CONTEXT_WINDOW:10}
+    timeout-minutes: ${SESSION_TIMEOUT_MINUTES:30}
+  security:
+    rate-limit-per-minute: ${RATE_LIMIT_PER_MINUTE:20}
+    max-message-length: ${MAX_MESSAGE_LENGTH:4000}
+    max-audio-size-mb: ${MAX_AUDIO_SIZE_MB:10}
+    max-audio-duration-sec: ${MAX_AUDIO_DURATION_SEC:60}
+    cors-allowed-origins: ${CORS_ALLOWED_ORIGINS}
+  evaluation:
+    dataset-path: ${EVALUATION_DATASET_PATH:./data/evaluation/dataset.json}
+    report-output-path: ${EVALUATION_REPORT_PATH:./data/evaluation/report.json}
+    threshold: ${EVALUATION_THRESHOLD:0.7}
+    timeout-seconds: ${EVALUATION_TIMEOUT_SECONDS:120}
+  circuit-breaker:
+    failure-threshold: ${CB_FAILURE_THRESHOLD:5}
+    cooldown-seconds: ${CB_COOLDOWN_SECONDS:30}
+  health:
+    check-timeout-seconds: ${HEALTH_CHECK_TIMEOUT_SECONDS:5}
+  workflow:
+    node-timeout-seconds: ${WORKFLOW_NODE_TIMEOUT_SECONDS:30}
+
+logging:
+  level:
+    root: INFO
+    com.intellidesk: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+intellidesk:
+  llm:
+    model: ${LLM_MODEL:gpt-4o-mini}
+    timeout-seconds: ${LLM_TIMEOUT_SECONDS:30}
+  embedding:
+    model: ${EMBEDDING_MODEL:text-embedding-3-small}
+  vector-store:
+    url: ${VECTOR_STORE_URL}
+  stt:
+    url: ${STT_SERVICE_URL}
+  rag:
+    top-k: ${RAG_TOP_K:5}
+    similarity-threshold: ${RAG_SIMILARITY_THRESHOLD:0.7}
+    chunk-size: ${RAG_CHUNK_SIZE:512}
+    chunk-overlap: ${RAG_CHUNK_OVERLAP:50}
+    knowledge-base-dir: ${KNOWLEDGE_BASE_DIR}
+  session:
+    context-window-size: ${SESSION_CONTEXT_WINDOW:10}
+    timeout-minutes: ${SESSION_TIMEOUT_MINUTES:30}
+  security:
+    rate-limit-per-minute: ${RATE_LIMIT_PER_MINUTE:20}
+    max-message-length: ${MAX_MESSAGE_LENGTH:4000}
+    max-audio-size-mb: ${MAX_AUDIO_SIZE_MB:10}
+    max-audio-duration-sec: ${MAX_AUDIO_DURATION_SEC:60}
+    cors-allowed-origins: ${CORS_ALLOWED_ORIGINS}
+  evaluation:
+    dataset-path: ${EVALUATION_DATASET_PATH}
+    report-output-path: ${EVALUATION_REPORT_PATH}
+    threshold: ${EVALUATION_THRESHOLD:0.7}
+    timeout-seconds: ${EVALUATION_TIMEOUT_SECONDS:120}
+  circuit-breaker:
+    failure-threshold: ${CB_FAILURE_THRESHOLD:5}
+    cooldown-seconds: ${CB_COOLDOWN_SECONDS:30}
+  health:
+    check-timeout-seconds: ${HEALTH_CHECK_TIMEOUT_SECONDS:5}
+  workflow:
+    node-timeout-seconds: ${WORKFLOW_NODE_TIMEOUT_SECONDS:30}
+
+logging:
+  level:
+    root: WARN
+    com.intellidesk: INFO

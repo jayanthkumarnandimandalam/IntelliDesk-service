@@ -1,0 +1,62 @@
+[
+  {
+    "question": "How do I reset my corporate password?",
+    "expectedCategory": "answerable",
+    "expectedAnswerKeywords": ["password", "reset", "self-service", "portal"]
+  },
+  {
+    "question": "How do I connect to the corporate VPN from my Windows laptop?",
+    "expectedCategory": "answerable",
+    "expectedAnswerKeywords": ["vpn", "GlobalProtect", "portal", "install"]
+  },
+  {
+    "question": "What are the IMAP settings for corporate email?",
+    "expectedCategory": "answerable",
+    "expectedAnswerKeywords": ["outlook.office365.com", "993", "IMAP", "SSL"]
+  },
+  {
+    "question": "How do I add a network printer to my computer?",
+    "expectedCategory": "answerable",
+    "expectedAnswerKeywords": ["printer", "network", "driver", "print server"]
+  },
+  {
+    "question": "How do I install software from the company portal?",
+    "expectedCategory": "answerable",
+    "expectedAnswerKeywords": ["software", "portal", "catalogue", "install"]
+  },
+  {
+    "question": "Can you explain the second step in more detail?",
+    "expectedCategory": "follow-up",
+    "expectedAnswerKeywords": ["step", "detail"]
+  },
+  {
+    "question": "What if that didn't work? Is there an alternative approach?",
+    "expectedCategory": "follow-up",
+    "expectedAnswerKeywords": ["alternative", "troubleshooting"]
+  },
+  {
+    "question": "And how do I verify it's working after that?",
+    "expectedCategory": "follow-up",
+    "expectedAnswerKeywords": ["verify", "working"]
+  },
+  {
+    "question": "What happens if my account gets locked out after too many attempts?",
+    "expectedCategory": "follow-up",
+    "expectedAnswerKeywords": ["locked", "account", "attempts"]
+  },
+  {
+    "question": "What is the stock price of our company?",
+    "expectedCategory": "unsupported",
+    "expectedAnswerKeywords": ["knowledge base", "information"]
+  },
+  {
+    "question": "Can you book me a meeting room for tomorrow at 2pm?",
+    "expectedCategory": "unsupported",
+    "expectedAnswerKeywords": ["knowledge base", "information"]
+  },
+  {
+    "question": "What is the company's annual revenue this quarter?",
+    "expectedCategory": "unsupported",
+    "expectedAnswerKeywords": ["knowledge base", "information"]
+  }
+]
