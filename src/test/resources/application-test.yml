@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: intellidesk-backend-test
+  profiles:
+    active: local
+  ai:
+    openai:
+      api-key: test-key-not-real
+
+intellidesk:
+  llm:
+    model: gpt-4o-mini
+    timeout-seconds: 5
+  embedding:
+    model: text-embedding-3-small
+  vector-store:
+    url: http://localhost:8000
+  stt:
+    url: http://localhost:9000
+  rag:
+    top-k: 5
+    similarity-threshold: 0.7
+    chunk-size: 512
+    chunk-overlap: 50
+    knowledge-base-dir: ./data/knowledge-base
+  session:
+    context-window-size: 10
+    timeout-minutes: 30
+  security:
+    rate-limit-per-minute: 20
+    max-message-length: 4000
+    max-audio-size-mb: 10
+    max-audio-duration-sec: 60
+    cors-allowed-origins: http://localhost:5173
+  evaluation:
+    dataset-path: ./data/evaluation/dataset.json
+    report-output-path: ./data/evaluation/report.json
+    threshold: 0.7
+    timeout-seconds: 120
+  circuit-breaker:
+    failure-threshold: 5
+    cooldown-seconds: 30
+  health:
+    check-timeout-seconds: 5
+  workflow:
+    node-timeout-seconds: 30
